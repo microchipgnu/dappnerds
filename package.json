@@ -1,0 +1,42 @@
+{
+  "name": "starter-react",
+  "version": "0.0.1",
+  "description": "A small scaffold to get you started using React with Webpack",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack && node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.1",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "style-loader": "^0.23.1",
+    "web3": "^1.2.10",
+    "moment": "^2.27.0",
+    "react-chat-widget": "^3.0.4",
+    "@web3-react/core": "^6.1.1",
+    "@web3-react/injected-connector": "^6.0.7",
+    "ethers": "^5.0.7",
+    "swr": "^0.2.3"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/starter-react"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
