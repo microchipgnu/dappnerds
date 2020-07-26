@@ -71,15 +71,13 @@ const Jumbo = ({ title, subtitle, chainId, account }) => {
                 title="Created"
                 value={block && moment.unix(block.timestamp).format()}
               />
-              <div
-                className="spinner-border spinner-border-sm text-primary"
-                role="status"
-              ></div>{" "}
-              <span className="text-muted">Listening to the blockchain...</span>
             </JumboCard>
 
             <JumboCard title="Account">
-              <JumboCardElement title="Address" value={account} />
+              <JumboCardElement
+                title="Address"
+                value={account.toLowerCase().slice(0, 7)}
+              />
               <JumboCardElement
                 title="Balance"
                 value={

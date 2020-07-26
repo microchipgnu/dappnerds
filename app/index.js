@@ -30,7 +30,7 @@ const getLibrary = (provider) => {
   return library;
 };
 
-const Index = () => {
+const Main = () => {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <ReactNotification />
@@ -39,4 +39,4 @@ const Index = () => {
   );
 };
 
-ReactDOM.render(<Index />, document.querySelector("#main"));
+ReactDOM.render(<Main />, document.querySelector("#main"));

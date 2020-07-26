@@ -8,17 +8,18 @@ import ChatABI from "../../abi/chat.json";
 
 const chatAddress = "0xe8f929dc1ee511e8c20224600dc14d7f06df2ccc";
 
+const chatName = "test"
+
 const Chat = ({ title, subtitle }) => {
   const { library, account } = useWeb3React();
 
   const contract = new Contract(chatAddress, ChatABI, library.getSigner());
 
   useEffect(() => {
-    contract.getMessageCountForRoom("general").then((count) => {
+    contract.getMessageCountForRoom(chatName).then((count) => {
       for (let i = 0, p = Promise.resolve(); i < count; i++) {
         p = p.then((_) =>
-          contract.getMessageByIndexForRoom("general", i).then((res) => {
-            console.log(res);
+          contract.getMessageByIndexForRoom(chatName, i).then((res) => {
             account.toLowerCase() === res[1].toLowerCase()
               ? addUserMessage(`${res[0]}`)
               : addResponseMessage(`${res[0]}`);
@@ -28,10 +29,12 @@ const Chat = ({ title, subtitle }) => {
     });
 
     const newMessageEvent = contract.filters.NewMessage();
+
+
     library.on(newMessageEvent, (tx) => {
       store.addNotification({
-        title: "Message received",
-        message: "dsfsd",
+        title: "New message event",
+        message: " ",
         type: "success",
         insert: "top",
         container: "top-right",
@@ -54,7 +57,7 @@ const Chat = ({ title, subtitle }) => {
       showTimeStamp={false}
       title={title}
       subtitle={subtitle}
-      handleNewUserMessage={(msg) => contract.sendMessage(msg, "general")}
+      handleNewUserMessage={(msg) => contract.sendMessage(msg, chatName)}
     />
   );
 };

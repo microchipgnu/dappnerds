@@ -26,6 +26,7 @@
     "react-notifications-component": "^2.4.0",
     "style-loader": "^0.23.1",
     "swr": "^0.2.3",
+    "unfetch": "^4.1.0",
     "web3": "^1.2.10",
     "webpack": "^4.1.1",
     "webpack-cli": "^3.3.12",
