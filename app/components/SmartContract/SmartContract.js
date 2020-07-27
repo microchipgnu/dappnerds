@@ -33,7 +33,7 @@ const SmartContract = ({
   );
 
   const { data: ABI } = useSWR(
-    `http://api-ropsten.etherscan.io/api?module=contract&action=getabi&address=${contractAddress}&apikey=X8AMVJABPG8KEAZ5Z6A5VS19CB1WBZW7GT`,
+    `https://api-ropsten.etherscan.io/api?module=contract&action=getabi&address=${contractAddress}&apikey=X8AMVJABPG8KEAZ5Z6A5VS19CB1WBZW7GT`,
     abiFetcher
   );
 
