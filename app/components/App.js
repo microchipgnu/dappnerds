@@ -39,10 +39,11 @@ const App = ({ injectedConnector }) => {
             web3={web3}
           />
           <SmartContract
-            title={"Simple E2E Supply Chain"}
-            description={"Interact with the Simple E2E Supply Chain smart contract."}
+            title={"Smart Contract"}
+            description={"Auto-generate UI for verified smart contracts."}
             contractAddress={"0x6dACCFB895bA0C4E0A6D2C37c5cD581108d0F93C"}
-            abi={SupplyChainABI}
+            //contractAddress={"0x55CDa35852d03EF9e16CE7011018ecb8E946c216"}
+            //abi={SupplyChainABI}
           />
         </SWRConfig>
       )}
