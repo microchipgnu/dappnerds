@@ -8,6 +8,14 @@ import { store } from "react-notifications-component";
 import JumboCard from "./JumboCard";
 import JumboCardElement from "./JumboCardElement";
 
+const idToName = {
+  1: "Mainnet",
+  3: "Ropsten",
+  4: "Rinkeby",
+  5: "Goerli",
+  42: "Kovan",
+};
+
 const Jumbo = ({ title, subtitle, chainId, account }) => {
   const { library } = useWeb3React();
 
@@ -55,7 +63,7 @@ const Jumbo = ({ title, subtitle, chainId, account }) => {
         <section style={{ marginTop: "10vh" }}>
           <div className="row">
             <JumboCard title="Network Status">
-              <JumboCardElement title="Chain Id" value={chainId} />
+              <JumboCardElement title="Name" value={idToName[chainId]} />
             </JumboCard>
 
             <JumboCard title="Blockchain Status">

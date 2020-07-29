@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { SWRConfig } from "swr";
 import { ethFetcher } from "ether-swr";
@@ -21,9 +21,14 @@ const App = ({ injectedConnector }) => {
 
   return (
     <>
+      <Nav title={"DappNerds"} account={active ? account : "..."} />
+      {!active && (
+        <div className="container text-center">
+          <p>Please, unlock your Metamask wallet.</p>
+        </div>
+      )}
       {active && (
         <SWRConfig value={{ fetcher: ethFetcher(library) }}>
-          <Nav title={"DappNerds"} account={active ? account : "..."} />
           <Jumbo
             title={"🏗️ Ethereum Dappboard 🌐"}
             subtitle={
@@ -37,14 +42,22 @@ const App = ({ injectedConnector }) => {
             title="Ethereum Chat"
             subtitle="All messages forever on the blockchain."
             web3={web3}
+            room={"test"}
           />
-          <SmartContract
-            title={"Smart Contract"}
-            description={"Auto-generate UI for verified smart contracts."}
-            contractAddress={"0x6dACCFB895bA0C4E0A6D2C37c5cD581108d0F93C"}
-            //contractAddress={"0x55CDa35852d03EF9e16CE7011018ecb8E946c216"}
-            //abi={SupplyChainABI}
-          />
+          {chainId === 3 && (
+            <>
+              <SmartContract
+                title={"Smart Contract - Simple Supply Chain"}
+                description={"Auto-generated UI for verified smart contracts."}
+                contractAddress={"0x6dACCFB895bA0C4E0A6D2C37c5cD581108d0F93C"}
+              />
+              <SmartContract
+                title={"Smart Contract - Chat"}
+                description={"Auto-generated UI for verified smart contracts."}
+                contractAddress={"0xe8f929dc1ee511e8c20224600dc14d7f06df2ccc"}
+              />
+            </>
+          )}
         </SWRConfig>
       )}
     </>

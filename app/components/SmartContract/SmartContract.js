@@ -56,21 +56,22 @@ const SmartContract = ({
       <p>Number of events: {events && events.result.length}</p>
       <p>Number of transactions: {txList && txList.result.length}</p>
 
-      {ABI && ABI.map((elm) => {
-        const { type, name, stateMutability, inputs, outputs } = elm;
-        if (type === "function") {
-          return (
-            <Method
-              type={type}
-              name={name}
-              stateMutability={stateMutability}
-              inputs={inputs}
-              contract={contract}
-              outputs={outputs}
-            />
-          );
-        }
-      })}
+      {ABI &&
+        ABI.map((elm) => {
+          const { type, name, stateMutability, inputs, outputs } = elm;
+          if (type === "function") {
+            return (
+              <Method
+                type={type}
+                name={name}
+                stateMutability={stateMutability}
+                inputs={inputs}
+                contract={contract}
+                outputs={outputs}
+              />
+            );
+          }
+        })}
     </div>
   );
 };

@@ -8,18 +8,16 @@ import ChatABI from "../../abi/chat.json";
 
 const chatAddress = "0xe8f929dc1ee511e8c20224600dc14d7f06df2ccc";
 
-const chatName = "test"
-
-const Chat = ({ title, subtitle }) => {
+const Chat = ({ title, subtitle, room }) => {
   const { library, account } = useWeb3React();
 
   const contract = new Contract(chatAddress, ChatABI, library.getSigner());
 
   useEffect(() => {
-    contract.getMessageCountForRoom(chatName).then((count) => {
+    contract.getMessageCountForRoom(room).then((count) => {
       for (let i = 0, p = Promise.resolve(); i < count; i++) {
         p = p.then((_) =>
-          contract.getMessageByIndexForRoom(chatName, i).then((res) => {
+          contract.getMessageByIndexForRoom(room, i).then((res) => {
             account.toLowerCase() === res[1].toLowerCase()
               ? addUserMessage(`${res[0]}`)
               : addResponseMessage(`${res[0]}`);
@@ -29,7 +27,6 @@ const Chat = ({ title, subtitle }) => {
     });
 
     const newMessageEvent = contract.filters.NewMessage();
-
 
     library.on(newMessageEvent, (tx) => {
       store.addNotification({
@@ -57,7 +54,7 @@ const Chat = ({ title, subtitle }) => {
       showTimeStamp={false}
       title={title}
       subtitle={subtitle}
-      handleNewUserMessage={(msg) => contract.sendMessage(msg, chatName)}
+      handleNewUserMessage={(msg) => contract.sendMessage(msg, room)}
     />
   );
 };
