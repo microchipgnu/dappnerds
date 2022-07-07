@@ -19,7 +19,7 @@
     "ether-swr": "^0.3.0",
     "ethers": "^5.0.7",
     "express": "^4.16.3",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "react": "^16.8.0",
     "react-chat-widget": "^3.0.4",
     "react-dom": "^16.8.1",
